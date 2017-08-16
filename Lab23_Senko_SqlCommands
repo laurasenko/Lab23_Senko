@@ -1,0 +1,64 @@
+1. Select all records from "Customers" table
+ 	select * from customers
+
+2. Get distinct countries from Customers table
+ 	select distinct country from customers
+
+3. Get all records from Customers where CustomerID starts with 'bl'
+ 	select * from customers 
+	where customerid='%BL%'
+
+4. Get the first 100 records of orders table
+	select * from orders
+	limit 100
+
+5. Get all customers in certain zip codes
+	select * from customers
+	where postalcode in ('1010', '3012', '12209', '05023')
+
+6. Get orders where ShipRegion != null
+	select * from orders
+	where shipregion is not null
+
+7. Get customers ordered by country, then by city
+	select *  from customers 
+	order by country, city
+
+8. Add a new customer to the table
+	insert into customers (customerid, companyname)
+	values('QLINC', 'Quicken');
+
+9. Update all ShipRegion to value 'Eurozone' in orders table, where shipcountry = France
+	update orders
+    set shipregion = 'Eurozone'
+    where shipcountry='France'
+
+10. Delete all orders from 'order details' that have quantity of 1
+	delete * from order_details
+	where quantity = 1
+
+11. Calculate average, min, and max of the quantity at order details table
+	select avg(quantity) from order_details
+	select min(quantity) from order_details
+	select max(quantity) from order_details
+	
+12. Calculate average, min, and max of the quantity at order details table, grouped by orderid
+	select avg(quantity) from order_details GROUP BY orderid
+	select min(quantity) from order_details GROUP BY orderid
+	select max(quantity) from order_details GROUP BY orderid
+
+13. Find CustomerID that place order 10290
+	select customerid from orders
+	where orderid='10290'
+---------------------------------
+Bonus
+---------------------------------
+14. Do an inner join, left join, right join on orders and customer tables
+
+15. Get employees' firstname for all employees who report to no one
+	select firstname from employees
+	where reportsto is null
+
+16. Get employees' firstname or all employees who report to Andrew
+	select firstname from employees
+	where reportsto = 'Andrew'
